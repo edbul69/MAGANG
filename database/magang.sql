@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 06, 2021 at 08:36 PM
+-- Generation Time: Sep 06, 2021 at 08:40 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 7.4.22
 
@@ -20,6 +20,35 @@ SET time_zone = "+00:00";
 --
 -- Database: `magang`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cctv`
+--
+
+CREATE TABLE `cctv` (
+  `ip` varchar(15) NOT NULL,
+  `lokasi` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `cctv`
+--
+
+INSERT INTO `cctv` (`ip`, `lokasi`) VALUES
+('172.27.17.17', 'GPDI Samrat'),
+('172.27.17.2', 'Jembatan Kuning'),
+('172.27.17.27', 'Depan SD Eben'),
+('172.27.17.29', 'Depan MTC'),
+('172.27.17.36', 'Depan MCC Bahu'),
+('172.27.17.5', 'GPDI Samrat 2'),
+('172.37.27.106', 'Marina Plaza'),
+('172.37.27.25', 'Calaca 2'),
+('172.37.27.37', 'Komo 1'),
+('172.37.27.38', 'Komo 2'),
+('172.37.27.40', 'Komo 3'),
+('192.168.1.8', 'Testing');
 
 -- --------------------------------------------------------
 
@@ -66,6 +95,12 @@ INSERT INTO `user_role` (`id`, `role`) VALUES
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `cctv`
+--
+ALTER TABLE `cctv`
+  ADD PRIMARY KEY (`ip`);
 
 --
 -- Indexes for table `user`
