@@ -45,13 +45,13 @@
                 <td><?php echo $row->lokasi ?></td>
                 <td>
                     <?php
-                    $ip = $row->ip;
-                    $ping = exec("ping -n 1 $ip", $output, $status);
-                    if ($status === 0) {
-                        echo "Online";
-                    } else {
-                        echo "Offline";
-                    }
+                    // $ip = $row->ip;
+                    // $ping = exec("ping -n 1 $ip", $output, $status);
+                    // if ($status === 0) {
+                    //     echo "Online";
+                    // } else {
+                    //     echo "Offline";
+                    // }
 
                     ?>
                 </td>

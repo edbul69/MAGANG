@@ -16,6 +16,7 @@ class user extends CI_Controller
         $DATA = array('data_cctv' => $recordCctv);
         $this->load->view('home', $DATA);
     }
+
     public function insertip()
     {
         $ip = $this->input->post('ip');
@@ -28,5 +29,22 @@ class user extends CI_Controller
         );
         $this->cctv->InsertDataCctv($datainsert);
         redirect(base_url('user'));
+    }
+
+    public function check_ping()
+    {
+        $recordCctv = $this->cctv->getDataCctv();
+        foreach($recordCctv as $c){
+            
+            $ping = exec("ping -n 1 $c->ip", $output, $status);
+
+            $data['ip'] = $c->ip;
+            $data['status'] = $status;
+            $data['timestamp'] = date("Y:m:d H:i:s");
+
+            echo print_r($data);
+            echo "<br>";
+            
+        }
     }
 }
