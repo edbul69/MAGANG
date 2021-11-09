@@ -17,7 +17,7 @@
 
                                 <?= $this->session->flashdata('message'); ?>
 
-                                <form class="user" method="POST" action="<?= base_url('auth'); ?>">
+                                <form class="user" method="POST" action="<?= base_url('Login'); ?>">
                                     <div class="form-group">
                                         <input type="text" class="form-control form-control-user" id="email" placeholder="Enter Email Address..." name="email" value="<?= set_value('email'); ?>">
 
@@ -31,13 +31,6 @@
                                         Login
                                     </button>
                                 </form>
-                                <hr>
-                                <div class="text-center">
-                                    <a class="small" href="forgot-password.html">Forgot Password?</a>
-                                </div>
-                                <div class="text-center">
-                                    <a class="small" href="<?= base_url('auth/registration') ?>">Create an Account!</a>
-                                </div>
                             </div>
                         </div>
                     </div>

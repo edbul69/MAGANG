@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class user extends CI_Controller
+class User extends CI_Controller
 {
     public function __construct()
     {
@@ -14,7 +14,9 @@ class user extends CI_Controller
 
         $recordCctv = $this->cctv->getDataCctv();
         $DATA = array('data_cctv' => $recordCctv);
-        $this->load->view('home', $DATA);
+        $this->load->view('templates/auth_header', $data);
+        $this->load->view('home/Home_view');
+        $this->load->view('templates/auth_footer');
     }
 
     public function insertip()
