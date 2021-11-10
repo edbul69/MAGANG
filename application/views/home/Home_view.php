@@ -10,7 +10,7 @@
     <H3>DAFTAR IP & LOKASI</H3>
 
     <table>
-        <form action="<?= base_url('user/insertip') ?>" method="post">
+        <form action="<?= base_url('home/insertip') ?>" method="post">
             <tr>
                 <td>IP Address</td>
                 <td>:</td>
