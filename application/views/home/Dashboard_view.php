@@ -88,6 +88,10 @@
                       <div class="table-responsive">
                         <table class="table table-bordered" width="100%" cellspacing="0" style="margin-top: 2ch">
                           <tr>
+                            <th>IP</th>
+                            <th>0.0.0.0</th>
+                          </tr>  
+                          <tr>
                             <th>Status</th>
                             <th class="text-primary">Aktif</th>
                           </tr>
@@ -117,6 +121,10 @@
                       <img src="assets\img\cctv.jpg" class="rounded-circle" alt="" width="100%" />
                       <div class="table-responsive">
                         <table class="table table-bordered" width="100%" cellspacing="0" style="margin-top: 2ch">
+                          <tr>
+                            <th>IP</th>
+                            <th>0.0.0.0</th>
+                          </tr>  
                           <tr>
                             <th>Status</th>
                             <th class="text">Tidak Aktif</th>
