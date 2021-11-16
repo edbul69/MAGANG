@@ -24,15 +24,16 @@ class Home extends CI_Controller
     public function insertip()
     {
         $ip = $this->input->post('ip');
+        $nama = $this->input->post('nama');
         $lokasi = $this->input->post('lokasi');
 
         $datainsert = array(
             'ip' => $ip,
+            'nama' => $nama,
             'lokasi' => $lokasi,
-
         );
         $this->cctv->InsertDataCctv($datainsert);
-        redirect(base_url('home'));
+        redirect(base_url('Home'));
     }
 
     public function check_ping()
@@ -50,5 +51,10 @@ class Home extends CI_Controller
             echo "<br>";
             
         }
+    }
+
+    public function dashboard()
+    {
+        redirect(base_url('Dashboard'));
     }
 }

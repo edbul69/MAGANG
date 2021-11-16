@@ -36,6 +36,13 @@
               </button>
             </form>
 
+            <a href="#" class="btn btn-primary btn-icon-split">
+                <span class="icon text-white-50">
+                    <i class="fas fa-arrow-right rotate-90"></i>
+                </span>
+                <span class="text">Dashboard</span>
+            </a>
+
             <!-- Topbar Navbar -->
             <ul class="navbar-nav ml-auto">
               <!-- Nav Item - Search Dropdown (Visible Only XS) -->
@@ -50,7 +57,7 @@
               <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-                  <img class="img-profile rounded-circle" src="img/undraw_profile.svg" />
+                  <img class="img-profile rounded-circle" src="assets/img/undraw_profile.svg" />
                 </a>
                 <!-- Dropdown - User Information -->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -69,7 +76,12 @@
             <!-- Page Heading -->
             <h1 class="h3 mb-2 text-gray-800">Details</h1>
             <table class="table" width="100%" cellspacing="0" style="margin-top: 2ch">
-              <tr>
+            <tr>
+                <th>IP</th>
+                <th>:</th>
+                <th>0.0.0.0</th>
+              </tr>  
+            <tr>
                 <th>Status</th>
                 <th>:</th>
                 <th class="text-primary">Aktif</th>
@@ -85,6 +97,13 @@
                 <th>Jl. P. Sumatera Kel. Bahu Kec. Malalayang</th>
               </tr>
             </table>
+
+            <a href="<?= base_url('Detail/pingTest') ?>" class="btn btn-info btn-icon-split mb-4" action="">
+                <span class="icon text-white-50">
+                  <i class="fas fa-info-circle"></i>
+                </span>
+                <span class="text">Check Ping</span>
+            </a>
 
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
@@ -108,83 +127,31 @@
                         <th>Status</th>
                       </tr>
                     </tfoot>
-                    <tbody>
-                      <tr>
-                        <td>01-10-2021</td>
-                        <td>12.00</td>
-                        <td>Aktif</td>
-                      </tr>
-                      <tr>
-                        <td>01-10-2021</td>
-                        <td>12.00</td>
-                        <td>Aktif</td>
-                      </tr>
-                      <tr>
-                        <td>01-10-2021</td>
-                        <td>12.00</td>
-                        <td>Aktif</td>
-                      </tr>
-                      <tr>
-                        <td>01-10-2021</td>
-                        <td>12.00</td>
-                        <td>Aktif</td>
-                      </tr>
-                      <tr>
-                        <td>01-10-2021</td>
-                        <td>12.00</td>
-                        <td>Aktif</td>
-                      </tr>
-                      <tr>
-                        <td>01-10-2021</td>
-                        <td>12.00</td>
-                        <td>Aktif</td>
-                      </tr>
-                      <tr>
-                        <td>01-10-2021</td>
-                        <td>12.00</td>
-                        <td>Aktif</td>
-                      </tr>
-                      <tr>
-                        <td>01-10-2021</td>
-                        <td>12.00</td>
-                        <td>Aktif</td>
-                      </tr>
-                      <tr>
-                        <td>01-10-2021</td>
-                        <td>12.00</td>
-                        <td>Aktif</td>
-                      </tr>
-                      <tr>
-                        <td>01-10-2021</td>
-                        <td>12.00</td>
-                        <td>Aktif</td>
-                      </tr>
-                      <tr>
-                        <td>01-10-2021</td>
-                        <td>12.00</td>
-                        <td>Aktif</td>
-                      </tr>
-                      <tr>
-                        <td>01-10-2021</td>
-                        <td>12.00</td>
-                        <td>Aktif</td>
-                      </tr>
-                      <tr>
-                        <td>01-10-2021</td>
-                        <td>12.00</td>
-                        <td>Aktif</td>
-                      </tr>
-                      <tr>
-                        <td>01-10-2021</td>
-                        <td>12.00</td>
-                        <td>Aktif</td>
-                      </tr>
-                      <tr>
-                        <td>01-10-2021</td>
-                        <td>12.00</td>
-                        <td>Aktif</td>
-                      </tr>
-                    </tbody>
+                    <?php
+                    $count = 0;
+                    foreach ($data_cctv as $row) {
+
+                        $count = $count + 1;
+                    ?>
+                    <tfoot>
+                        <tr>
+                            <td><?php echo $row->ip ?></td>
+                            <td><?php echo $row->lokasi ?></td>
+                            <td>
+                                <?php
+                                // $ip = $row->ip;
+                                // $ping = exec("ping -n 1 $ip", $output, $status);
+                                // if ($status === 0) {
+                                //     echo "Online";
+                                // } else {
+                                //     echo "Offline";
+                                // }
+
+                                ?>
+                            </td>
+                        </tr>
+                                </tfoot>
+                    <?php } ?>
                   </table>
                 </div>
               </div>

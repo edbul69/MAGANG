@@ -16,4 +16,9 @@ class cctv extends CI_Model
     {
         $this->db->insert('cctv', $data);
     }
+
+    public function InsertDataPing($data)
+    {
+        $this->db->insert('', $data);
+    }
 }

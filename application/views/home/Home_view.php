@@ -12,7 +12,7 @@
               <i class="fa fa-bars"></i>
             </button>
             
-            <a href="#" class="btn btn-primary btn-icon-split">
+            <a href="<?= base_url('home/dashboard') ?>" class="btn btn-primary btn-icon-split">
                 <span class="icon text-white-50">
                     <i class="fas fa-arrow-right rotate-90"></i>
                 </span>
@@ -67,17 +67,24 @@
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
               <h1 class="h3 mb-0 text-gray-800">DAFTAR IP & LOKASI</h1>
             </div>
-                <form class="table" action="<?= base_url('home/insertip') ?>" method="post">
+                <form class="form mb-4" action="<?= base_url('home/insertip') ?>" method="post">
+                  <table class="table">
                         <tr>
-                            <td>IP Address</td>
-                            <td>:</td>
-                            <td><input  type="text" name="ip" required></td>
+                            <th>IP Address</th>
+                            <th>:</th>
+                            <th><input  type="text" name="ip" required style="width:50%;"></th>
+                        </tr>
+                        <tr">
+                            <th>Nama</th>
+                            <th>:</th>
+                            <th><input type="text" name="nama" required style="width:50%;"></th>
                         </tr>
                         <tr>
-                            <td>Lokasi</td>
-                            <td>:</td>
-                            <td><input type="text" name="lokasi" required></td>
+                            <th>Lokasi</th>
+                            <th>:</th>
+                            <th><input type="text" name="lokasi" required style="width:50%;"></th>
                         </tr>
+                        </table>
                         <input class="btn btn-primary" type="submit">
                 </form>
 
@@ -108,7 +115,6 @@
                                 // } else {
                                 //     echo "Offline";
                                 // }
-
                                 ?>
                             </td>
                         </tr>
