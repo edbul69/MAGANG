@@ -79,50 +79,52 @@
                     $count = 0;
                     foreach ($data_cctv as $row) {
                         $count = $count + 1;
-                    ?>
-                    <div class="col-xl-2 col-md-4 mb-2">
-                      <div class="card shadow mb-4 border-left-danger">
-                        <!-- Card Header - Accordion -->
-                        <a href="#<?php echo $row->ip ?>" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
-                          <h6 class="m-0 font-weight-bold text-primary">Nama CCTV</h6>
-                        </a>
-                        <div class="collapse hidden" id="<?php echo $row->ip ?>">
-                          <div class="card-body">
-                            <img src="assets\img\cctv.jpg" class="rounded-circle" alt="" width="100%" />
-                            <div class="table-responsive">
-                              <table class="table table-bordered" width="100%" cellspacing="0" style="margin-top: 2ch">
-                                <tr>
-                                  <th>IP</th>
-                                  <th><?php echo $row->ip ?></th>
-                                </tr>  
-                                <tr>
-                                  <th>Status</th>
-                                  <th class="text">
-                                  <?php
-                                    // $ip = $row->ip;
-                                    // $ping = exec("ping -n 1 $ip", $output, $status);
-                                    // if ($status === 0) {
-                                    //     echo "Online";
-                                    // } else {
-                                    //     echo "Offline";
-                                    // }
-                                  ?>
-                                  </th>
-                                </tr>
-                                <tr>
-                                  <th>Lokasi</th>
-                                  <th><?php echo $row->lokasi ?></th>
-                                </tr>
-                              </table>
+                        $ip = $row->ip;
+
+                        $ping = exec("ping -n 1 $ip", $output, $hasil);
+                        if ($hasil === 0) {
+                            $status = "Online";
+                            $warna = "success";
+                        } else {
+                            $status = "Offline";
+                            $warna = "danger";
+                        }
+
+                        echo "
+                        <div class=\"col-xl-2 col-md-4 mb-2\">
+                          <div class=\"card shadow mb-4 border-left-$warna\">
+                            <!-- Card Header - Accordion -->
+                            <a href=\"#$row->nama\" class=\"d-block card-header py-3\" data-toggle=\"collapse\" role=\"button\" aria-expanded=\"true\" aria-controls=\"collapseCardExample\">
+                              <h6 class=\"m-0 font-weight-bold text-primary\">$row->nama</h6>
+                            </a>
+                            <div class=\"collapse hidden\" id=\"$row->nama\">
+                              <div class=\"card-body\">
+                                <img src=\"assets\img\cctv.jpg\" class=\"rounded-circle\" alt=\"\" width=\"100%\" />
+                                <div class=\"table-responsive\">
+                                  <table class=\"table table-bordered\" width=\"100%\" cellspacing=\"0\" style=\"margin-top: 2ch\">
+                                    <tr>
+                                      <th>IP</th>
+                                      <th>$row->ip</th>
+                                    </tr>  
+                                    <tr>
+                                      <th>Status</th>
+                                      <th class=\"text text-$warna\">$status</th>
+                                    </tr>
+                                    <tr>
+                                      <th>Lokasi</th>
+                                      <th>$row->lokasi</th>
+                                    </tr>
+                                  </table>
+                                </div>
+                              </div>
+                              <a href=\"#\" class=\"d-block card-header py-3\" role=\"button\">
+                                <h6 class=\"m-0 font-weight-bold text-warning\">Lihat Detail</h6>
+                              </a>
                             </div>
                           </div>
-                          <a href="#" class="d-block card-header py-3" role="button">
-                            <h6 class="m-0 font-weight-bold text-warning">Lihat Detail</h6>
-                          </a>
                         </div>
-                      </div>
-                    </div>
-                    <?php } ?>
+                        ";
+                    } ?>
             </div>
           </div>
           <!-- /.container-fluid -->
@@ -132,7 +134,7 @@
       <!-- End of Content Wrapper -->
     </div>
     <!-- End of Page Wrapper -->
-
+                    
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fas fa-angle-up"></i>
