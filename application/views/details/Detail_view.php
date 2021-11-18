@@ -135,8 +135,20 @@
                     ?>
                     <tfoot>
                         <tr>
-                            <td><?php echo $row->ip ?></td>
-                            <td><?php echo $row->lokasi ?></td>
+                            <td>
+                              <?php
+                                $timestamp = $row->waktu;
+                                $date = date("M d, Y", strtotime($timestamp));
+                                echo $date;
+                              ?>  
+                            </td>
+                            <td>
+                            <?php
+                                $timestamp = $row->waktu;
+                                $date = date("H:i:s", strtotime($timestamp));
+                                echo $date;
+                              ?>  
+                            </td>
                             <td>
                                 <?php
                                 // $ip = $row->ip;

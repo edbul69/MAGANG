@@ -11,7 +11,7 @@ class Detail extends CI_Controller
 
     public function index()
     {
-        $recordCctv = $this->cctv->getDataCctv();
+        $recordCctv = $this->cctv->getDetailCctv();
         $data['data_cctv'] = $recordCctv;
         $data['title'] =  "Daftar CCTV";
 		
@@ -29,6 +29,13 @@ class Detail extends CI_Controller
         } else {
             echo "Offline";
         }
+
+        $datainsert = array(
+            'ip' => $ip,
+            'status' => $status,
+        );
+        $this->cctv->InsertDetailCctv($datainsert);
+
         redirect(base_url('Detail'));
     }
 }

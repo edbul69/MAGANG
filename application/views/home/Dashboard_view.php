@@ -83,10 +83,10 @@
                     <div class="col-xl-2 col-md-4 mb-2">
                       <div class="card shadow mb-4 border-left-danger">
                         <!-- Card Header - Accordion -->
-                        <a href="<?= $count ?>" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+                        <a href="#<?php echo $row->ip ?>" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
                           <h6 class="m-0 font-weight-bold text-primary">Nama CCTV</h6>
                         </a>
-                        <div class="collapse hidden" id="<?= $count ?>">
+                        <div class="collapse hidden" id="<?php echo $row->ip ?>">
                           <div class="card-body">
                             <img src="assets\img\cctv.jpg" class="rounded-circle" alt="" width="100%" />
                             <div class="table-responsive">
