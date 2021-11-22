@@ -117,7 +117,7 @@
                                   </table>
                                 </div>
                               </div>
-                              <a href="'.base_url('Detail'.$row->ip).'" class="d-block card-header py-3" role="button">
+                              <a href="'.base_url('Detail'.$row->nama).'" class="d-block card-header py-3" role="button">
                                 <h6 class="m-0 font-weight-bold text-warning">Lihat Detail</h6>
                               </a>
                             </div>
