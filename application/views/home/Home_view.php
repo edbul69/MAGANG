@@ -1,4 +1,29 @@
-<body id="page-top">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title><?= $title; ?></title>
+
+    <!-- Custom fonts for this template-->
+    <link href="<?= base_url('assets/'); ?>vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="<?= base_url('assets/'); ?>https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="<?= base_url('assets/'); ?>css/sb-admin-2.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this page -->
+    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+</head>
+
+<body class="bg-gradient-primary" id="page-top">
     <!-- Page Wrapper -->
     <div id="wrapper">
       <!-- Content Wrapper -->
@@ -47,7 +72,7 @@
               <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
-                  <img class="img-profile rounded-circle" src="assets/img/undraw_profile.svg" />
+                  <img class="img-profile rounded-circle" src="assets/img/kominfo.png" />
                 </a>
                 <!-- Dropdown - User Information -->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -88,39 +113,80 @@
                         <input class="btn btn-primary" type="submit">
                 </form>
 
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead?>    
-                <tr>
-                        <td><b>IP Address</b></td>
-                        <td><b>Lokasi</b></td>
-                        <td><b>Status</b></td>
-                    </tr>
-</thead>
-                    <?php
-                    $count = 0;
-                    foreach ($data_cctv as $row) {
+                <table id="tabelCCTV" class="table table-bordered" width="100%" cellspacing="0">
+                      <thead>
+                          <tr>
+                              <th>IP</th>
+                              <th>Nama CCTV</th>
+                              <th>Lokasi</th>
+                              <th>Status</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          
+                          <?php
+                                    $count = 0;
+                                    foreach ($data_cctv as $row) {
 
-                        $count = $count + 1;
-                    ?>
-                    <tfoot>
-                        <tr>
-                            <td><?php echo $row->ip ?></td>
-                            <td><?php echo $row->lokasi ?></td>
-                            <td>
-                                <?php
-                                // $ip = $row->ip;
-                                // $ping = exec("ping -n 1 $ip", $output, $status);
-                                // if ($status === 0) {
-                                //     echo "Online";
-                                // } else {
-                                //     echo "Offline";
-                                // }
-                                ?>
-                            </td>
-                        </tr>
-                                </tfoot>
-                    <?php } ?>
-                </table>
+                                        $count = $count + 1;
+                                    ?>
+                                        <tr>
+                                            <td><?php echo $row->ip ?></td>
+                                            <td><?php echo $row->nama ?></td>
+                                            <td><?php echo $row->lokasi ?></td>
+                                            <td>
+                                              <?php
+                                              // $ip = $row->ip;
+                                              // $ping = exec("ping -n 1 $ip", $output, $status);
+                                              // if ($status === 0) {
+                                              //     echo "Online";
+                                              // } else {
+                                              //     echo "Offline";
+                                              // }
+                                              ?>
+                                          </td>
+                                        </tr>
+                                    <?php } ?>
+                      </tbody>
+                      <tfoot>
+                          <tr>
+                              <th>Name</th>
+                              <th>Position</th>
+                              <th>Lokasi</th>
+                              <th>Status</th>
+                          </tr>
+                      </tfoot>
+                  </table>
                     </div>
-</body>
 
+                    
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+      $(document).ready(function() {
+          $('#tabelCCTV').DataTable({
+            searching: false,
+            lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "ALL"]]
+          });
+      } );
+    </script>
+
+ </body>
+
+ </html>

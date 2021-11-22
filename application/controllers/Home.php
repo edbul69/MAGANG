@@ -16,9 +16,7 @@ class Home extends CI_Controller
         $data['data_cctv'] = $recordCctv;
         $data['title'] =  "Daftar CCTV";
 		
-        $this->load->view('templates/auth_header', $data);
-        $this->load->view('home/Home_view');
-        $this->load->view('templates/auth_footer');
+        $this->load->view('home/Home_view', $data);
     }
 
     public function insertip()

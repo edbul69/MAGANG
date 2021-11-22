@@ -1,24 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
 
-    <title>SB Admin 2 - Tables</title>
+<head>
 
-    <!-- Custom fonts for this template -->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-    <!-- Custom styles for this template -->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet" />
+    <title><?= $title; ?></title>
+
+    <!-- Custom fonts for this template-->
+    <link href="<?= base_url('assets/'); ?>vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="<?= base_url('assets/'); ?>https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="<?= base_url('assets/'); ?>css/sb-admin-2.min.css" rel="stylesheet">
 
     <!-- Custom styles for this page -->
-    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" />
-  </head>
+    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+</head>
 
   <body id="page-top">
     <!-- Page Wrapper -->
@@ -57,7 +60,7 @@
               <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-                  <img class="img-profile rounded-circle" src="assets/img/undraw_profile.svg" />
+                  <img class="img-profile rounded-circle" src="assets/img/kominfo.png" />
                 </a>
                 <!-- Dropdown - User Information -->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -112,7 +115,7 @@
               </div>
               <div class="card-body">
                 <div class="table-responsive">
-                  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table id="tabelDetail" class="table table-bordered" width="100%" cellspacing="0">
                     <thead>
                       <tr>
                         <th>Tanggal</th>
@@ -120,20 +123,13 @@
                         <th>Status</th>
                       </tr>
                     </thead>
-                    <tfoot>
-                      <tr>
-                        <th>Tanggal</th>
-                        <th>Jam</th>
-                        <th>Status</th>
-                      </tr>
-                    </tfoot>
+                    <tbody>
                     <?php
                     $count = 0;
                     foreach ($data_cctv as $row) {
 
                         $count = $count + 1;
                     ?>
-                    <tfoot>
                         <tr>
                             <td>
                               <?php
@@ -158,12 +154,11 @@
                                 // } else {
                                 //     echo "Offline";
                                 // }
-
                                 ?>
                             </td>
-                        </tr>
-                                </tfoot>
+                        </tr>    
                     <?php } ?>
+                    </tbody>
                   </table>
                 </div>
               </div>
@@ -215,7 +210,18 @@
     <script src="vendor/datatables/jquery.dataTables.min.js"></script>
     <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
-    <!-- Page level custom scripts -->
-    <script src="js/demo/datatables-demo.js"></script>
-  </body>
-</html>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+      $(document).ready(function() {
+          $('#tabelDetail').DataTable({
+            searching: false,
+            lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "ALL"]]
+          });
+      } );
+    </script>
+
+ </body>
+
+ </html>

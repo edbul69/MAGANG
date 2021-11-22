@@ -13,11 +13,9 @@ class Detail extends CI_Controller
     {
         $recordCctv = $this->cctv->getDetailCctv();
         $data['data_cctv'] = $recordCctv;
-        $data['title'] =  "Daftar CCTV";
+        $data['title'] =  "Detail CCTV";
 		
-        $this->load->view('templates/auth_header', $data);
-        $this->load->view('details/Detail_view');
-        $this->load->view('templates/auth_footer');
+        $this->load->view('details/Detail_view', $data);
     }
 
     public function pingTest()
