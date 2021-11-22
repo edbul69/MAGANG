@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 15, 2021 at 11:25 AM
+-- Generation Time: Nov 22, 2021 at 10:25 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -38,18 +38,39 @@ CREATE TABLE `cctv` (
 --
 
 INSERT INTO `cctv` (`ip`, `nama`, `lokasi`) VALUES
-('172.27.17.17', '', 'GPDI Samrat'),
-('172.27.17.2', '', 'Jembatan Kuning'),
-('172.27.17.27', '', 'Depan SD Eben'),
-('172.27.17.29', '', 'Depan MTC'),
-('172.27.17.36', '', 'Depan MCC Bahu'),
-('172.27.17.5', '', 'GPDI Samrat 2'),
-('172.37.27.106', '', 'Marina Plaza'),
-('172.37.27.25', '', 'Calaca 2'),
-('172.37.27.37', '', 'Komo 1'),
-('172.37.27.38', '', 'Komo 2'),
-('172.37.27.40', '', 'Komo 3'),
-('192.168.1.8', '', 'Testing');
+('172.27.17.17', 'Samrat', 'GPDI Samrat'),
+('172.27.17.2', 'Jembatan', 'Jembatan Kuning'),
+('172.27.17.27', 'Eben', 'Depan SD Eben'),
+('172.27.17.29', 'MTC', 'Depan MTC'),
+('172.27.17.36', 'MCC', 'Depan MCC Bahu'),
+('172.27.17.5', 'GPDI', 'GPDI Samrat 2'),
+('172.37.27.106', 'Marina', 'Marina Plaza'),
+('172.37.27.25', 'Calaca', 'Calaca 2'),
+('172.37.27.37', 'Komo1', 'Komo 1'),
+('172.37.27.38', 'Komo2', 'Komo 2'),
+('172.37.27.40', 'Komo3', 'Komo 3'),
+('8.8.8.8', 'Testing', 'Testing');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `detail_cctv`
+--
+
+CREATE TABLE `detail_cctv` (
+  `id` int(11) NOT NULL,
+  `ip` varchar(15) NOT NULL,
+  `status` varchar(10) NOT NULL,
+  `waktu` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `detail_cctv`
+--
+
+INSERT INTO `detail_cctv` (`id`, `ip`, `status`, `waktu`) VALUES
+(1, '', '', '2021-11-18 18:45:32'),
+(2, '172.27.17.17', '', '2021-11-18 18:45:32');
 
 -- --------------------------------------------------------
 
@@ -104,6 +125,12 @@ ALTER TABLE `cctv`
   ADD PRIMARY KEY (`ip`);
 
 --
+-- Indexes for table `detail_cctv`
+--
+ALTER TABLE `detail_cctv`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -118,6 +145,12 @@ ALTER TABLE `user_role`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `detail_cctv`
+--
+ALTER TABLE `detail_cctv`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `user`
