@@ -19,6 +19,7 @@ class cctv extends CI_Model
 
     public function getDetailCctv()
     {
+        //$sql = "SELECT * FROM detail_cctv WHERE ip='$ip_cctv'"
         $this->db->select('*');
         $this->db->from('detail_cctv');
         $query = $this->db->get();

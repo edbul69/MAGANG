@@ -19,4 +19,10 @@ class Dashboard extends CI_Controller
         $this->load->view('home/Dashboard_view');
         $this->load->view('templates/auth_footer');
     }
+
+    public function detail($ip_cctv)
+    {
+        $data['ip'] = $this->cctv->getDetailCctv($ip_cctv);
+        return view('details/Detail_view', $data);
+    }
 }
