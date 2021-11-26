@@ -9,31 +9,37 @@ class Detail extends CI_Controller
         $this->load->model('cctv');
     }
 
-    public function index()
+    public function index($ip_cctv)
     {
-        $recordCctv = $this->cctv->getDetailCctv();
-        $data['data_cctv'] = $recordCctv;
+        $detailCctv = $this->cctv->getDetailCctv($ip_cctv);
+        $data['data_cctv'] = $detailCctv;
         $data['title'] =  "Detail CCTV";
-		
+        $data['ip'] = $ip_cctv;
+
+        $dataCctv = $this->cctv->getCctv($ip_cctv);
+        $data['lokasi'] = $dataCctv;
         $this->load->view('details/Detail_view', $data);
     }
 
-    public function pingTest()
+
+    public function pingTest($ip)
     {
-        $ip = $row->ip;
-        $ping = exec("ping -n 1 $ip", $output, $status);
+        exec("ping -n 1 $ip", $output, $status);
+
         if ($status === 0) {
-            echo "Online";
+            $hasil = "Online";
         } else {
-            echo "Offline";
+            $hasil = "Offline";
         }
 
         $datainsert = array(
             'ip' => $ip,
-            'status' => $status,
+            'status' => $hasil,
         );
+            
         $this->cctv->InsertDetailCctv($datainsert);
 
-        redirect(base_url('Detail'));
+        redirect(base_url('index.php/Detail/index/'.$ip));
+
     }
 }

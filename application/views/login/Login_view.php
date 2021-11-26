@@ -17,7 +17,7 @@
 
                                 <?= $this->session->flashdata('message'); ?>
 
-                                <form class="user" method="POST" action="<?= base_url('Login'); ?>">
+                                <form class="user" method="POST" action="<?= base_url('index.php/Login'); ?>">
                                     <div class="form-group">
                                         <input type="text" class="form-control form-control-user" id="email" placeholder="Enter Email Address..." name="email" value="<?= set_value('email'); ?>">
 

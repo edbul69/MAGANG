@@ -17,12 +17,17 @@ class cctv extends CI_Model
         $this->db->insert('cctv', $data);
     }
 
-    public function getDetailCctv()
+    public function getDetailCctv($ip_cctv)
     {
-        //$sql = "SELECT * FROM detail_cctv WHERE ip='$ip_cctv'"
-        $this->db->select('*');
-        $this->db->from('detail_cctv');
-        $query = $this->db->get();
+        $sql = "SELECT * FROM detail_cctv WHERE ip='$ip_cctv'";
+        $query = $this->db->query($sql);
+        return $query->result();
+    }
+
+    public function getCctv($ip_cctv)
+    {
+        $sql = "SELECT lokasi FROM cctv WHERE ip='$ip_cctv'";
+        $query = $this->db->query($sql);
         return $query->result();
     }
 

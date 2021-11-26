@@ -37,7 +37,7 @@
               <i class="fa fa-bars"></i>
             </button>
             
-            <a href="<?= base_url('home/dashboard') ?>" class="btn btn-primary btn-icon-split">
+            <a href="<?= base_url('index.php/home/dashboard') ?>" class="btn btn-primary btn-icon-split">
                 <span class="icon text-white-50">
                     <i class="fas fa-arrow-right rotate-90"></i>
                 </span>
@@ -92,7 +92,9 @@
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
               <h1 class="h3 mb-0 text-gray-800">DAFTAR IP & LOKASI</h1>
             </div>
-                <form class="form mb-4" action="<?= base_url('home/insertip') ?>" method="post">
+
+            <!--  tambah index.php d form action -->
+                <form class="form mb-4" action="<?= base_url('index.php/home/insertip') ?>" method="post">
                   <table class="table">
                         <tr>
                             <th>IP Address</th>
@@ -134,17 +136,15 @@
                                             <td><?php echo $row->ip ?></td>
                                             <td><?php echo $row->nama ?></td>
                                             <td><?php echo $row->lokasi ?></td>
-                                            <td>
                                               <?php
-                                              // $ip = $row->ip;
-                                              // $ping = exec("ping -n 1 $ip", $output, $status);
-                                              // if ($status === 0) {
-                                              //     echo "Online";
-                                              // } else {
-                                              //     echo "Offline";
-                                              // }
+                                              $ip = $row->ip;
+                                              $ping = exec("ping -n 1 $ip", $output, $status);
+                                              if ($status === 0) {
+                                                  echo '<td class="text text-success">Online</td>';
+                                              } else {
+                                                  echo '<td class="text text-danger">Offline</td>';
+                                              }
                                               ?>
-                                          </td>
                                         </tr>
                                     <?php } ?>
                       </tbody>

@@ -31,7 +31,7 @@ class Home extends CI_Controller
             'lokasi' => $lokasi,
         );
         $this->cctv->InsertDataCctv($datainsert);
-        redirect(base_url('Home'));
+        redirect(base_url('index.php/Home'));
     }
 
     public function check_ping()
@@ -53,6 +53,6 @@ class Home extends CI_Controller
 
     public function dashboard()
     {
-        redirect(base_url('Dashboard'));
+        redirect(base_url('index.php/Dashboard'));
     }
 }

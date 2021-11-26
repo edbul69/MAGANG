@@ -42,18 +42,18 @@ class Login extends CI_Controller
                     ];
                     $this->session->set_userdata($data);
 
-                    redirect('Home');
+                    redirect('index.php/Home');
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Wrong password!</div>');
-                    redirect('Login');
+                    redirect('index.php/Login');
                 }
             } else {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Email has not been activated!</div>');
-                redirect('Login');
+                redirect('index.php/Login');
             }
         } else {
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Email is not registered!</div>');
-            redirect('Login');
+            redirect('index.php/Login');
         }
     }
 }

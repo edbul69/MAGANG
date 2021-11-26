@@ -13,17 +13,12 @@
               <i class="fa fa-bars"></i>
             </button>
 
-            <!-- Topbar Search -->
-            <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-              <div class="input-group">
-                <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
-                <div class="input-group-append">
-                  <button class="btn btn-primary" type="button">
-                    <i class="fas fa-search fa-sm"></i>
-                  </button>
-                </div>
-              </div>
-            </form>
+            <a href="<?= base_url('index.php/Dashboard/home') ?>" class="btn btn-primary btn-icon-split">
+                <span class="icon text-white-50">
+                    <i class="fas fa-arrow-right rotate-90"></i>
+                </span>
+                <span class="text">Home</span>
+            </a>
 
             <!-- Topbar Navbar -->
             <ul class="navbar-nav ml-auto">
@@ -81,18 +76,18 @@
                         $count = $count + 1;
                         $ip = $row->ip;
 
-                        //$ping = exec("ping -n 1 $ip", $output, $hasil);
-                        //if ($hasil === 0) {
-                        //    $status = "Online";
-                        //    $warna = "success";
-                        //} else {
-                        //    $status = "Offline";
-                        //    $warna = "danger";
-                        //}
+                        $ping = exec("ping -n 1 $ip", $output, $hasil);
+                        if ($hasil === 0) {
+                            $status = "Online";
+                            $warna = "success";
+                        } else {
+                            $status = "Offline";
+                            $warna = "danger";
+                        }
 
                         echo '
                         <div class="col-xl-2 col-md-4 mb-2">
-                          <div class="card shadow mb-4 border-left-warna">
+                          <div class="card shadow mb-4 border-left-'.$warna.'">
                             <!-- Card Header - Accordion -->
                             <a href="#'.$row->nama.'" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
                               <h6 class="m-0 font-weight-bold text-primary">'.$row->nama.'</h6>
@@ -108,7 +103,7 @@
                                     </tr>  
                                     <tr>
                                       <th>Status</th>
-                                      <th class="text text-$warna">status</th>
+                                      <th class="text text-'.$warna.'">'.$status.'</th>
                                     </tr>
                                     <tr>
                                       <th>Lokasi</th>
@@ -117,7 +112,7 @@
                                   </table>
                                 </div>
                               </div>
-                              <a href="'.base_url('Dashboard/detail/'.$row->ip).'" class="d-block card-header py-3" role="button">
+                              <a href="'.base_url('index.php/Detail/index/'.$row->ip).'" class="d-block card-header py-3" role="button">
                                 <h6 class="m-0 font-weight-bold text-warning">Lihat Detail</h6>
                               </a>
                             </div>

@@ -21,8 +21,6 @@
     <!-- Custom styles for this page -->
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
-    
-
 </head>
 
   <body id="page-top">
@@ -35,9 +33,11 @@
           <!-- Topbar -->
           <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
             <!-- Sidebar Toggle (Topbar) -->
-            <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-              <i class="fa fa-bars"></i>
-            </button>
+            <form class="form-inline">
+              <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                <i class="fa fa-bars"></i>
+              </button>
+            </form>
 
             <a href="<?= base_url('index.php/home/dashboard') ?>" class="btn btn-primary btn-icon-split">
                 <span class="icon text-white-50">
@@ -53,27 +53,13 @@
                 <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="fas fa-search fa-fw"></i>
                 </a>
-                <!-- Dropdown - Messages -->
-                <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
-                  <form class="form-inline mr-auto w-100 navbar-search">
-                    <div class="input-group">
-                      <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
-                      <div class="input-group-append">
-                        <button class="btn btn-primary" type="button">
-                          <i class="fas fa-search fa-sm"></i>
-                        </button>
-                      </div>
-                    </div>
-                  </form>
-                </div>
+
+                <!-- Nav Item - User Information -->
               </li>
 
-              <div class="topbar-divider d-none d-sm-block"></div>
-
-              <!-- Nav Item - User Information -->
               <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
+                  <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
                   <img class="img-profile rounded-circle" src="assets/img/kominfo.png" />
                 </a>
                 <!-- Dropdown - User Information -->
@@ -87,7 +73,6 @@
             </ul>
           </nav>
           <!-- End of Topbar -->
-
           <!-- Begin Page Content -->
           <div class="container-fluid">
             <!-- Page Heading -->
@@ -96,56 +81,31 @@
             <tr>
                 <th>IP</th>
                 <th>:</th>
-                <th><?php echo $ip ?></th>
+                <th><?php echo "status"?></th>
               </tr>  
             <tr>
                 <th>Status</th>
                 <th>:</th>
-                <?php
-                  $ping = exec("ping -n 1 $ip", $output, $status);
-                  if ($status === 0) {
-                      
-                    echo '<th class="text text-success">Aktif</th>';
-                  } else {
-                    echo '<th class="text text-danger">Tidak Aktif</th>';
-                  }
-                ?>
-                
+                <th class="text-primary">Aktif</th>
               </tr>
               <tr>
                 <th>Terakhir Aktif</th>
                 <th>:</th>
-                <?php
-                  $count = 0;
-                  foreach ($data_cctv as $row) {
-                  $count = $count + 1;
-                  $timestamp = $row->waktu;
-                  $tanggal = date("M d, Y", strtotime($timestamp));
-                  $timestamp = $row->waktu;
-                  $jam = date("H:i:s", strtotime($timestamp));
-                } ?>
-                <th><?php echo $tanggal ?><br/><?php echo $jam ?></th>
+                <th class="text-primary">Beberapa yang lalu</th>
               </tr>
               <tr>
                 <th>Lokasi</th>
                 <th>:</th>
-                <?php
-                  $count = 0;
-                  foreach ($lokasi as $row) {
-                  $count = $count + 1;
-                  $alamat = $row->lokasi;
-                } ?>
-                <th><?php echo $alamat ?></th>
+                <th>Jl. P. Sumatera Kel. Bahu Kec. Malalayang</th>
               </tr>
             </table>
-            
 
-            <?php echo '<a href="'.base_url('index.php/Detail/pingTest/'.$ip).'" class="btn btn-info btn-icon-split mb-4" action="">
+            <a href="<?= base_url('index.php/Detail/pingTest') ?>" class="btn btn-info btn-icon-split mb-4" action="">
                 <span class="icon text-white-50">
                   <i class="fas fa-info-circle"></i>
                 </span>
                 <span class="text">Check Ping</span>
-            </a>' ?>
+            </a>
 
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
@@ -165,7 +125,7 @@
                     <tbody>
                     <?php
                     $count = 0;
-                    foreach ($data_cctv as $row) {
+                    foreach ($detail as $row) {
 
                         $count = $count + 1;
                     ?>
@@ -173,15 +133,15 @@
                             <td>
                               <?php
                                 $timestamp = $row->waktu;
-                                $tanggal = date("M d, Y", strtotime($timestamp));
-                                echo $tanggal;
+                                $date = date("M d, Y", strtotime($timestamp));
+                                echo $date;
                               ?>  
                             </td>
                             <td>
                             <?php
                                 $timestamp = $row->waktu;
-                                $jam = date("H:i:s", strtotime($timestamp));
-                                echo $jam;
+                                $date = date("H:i:s", strtotime($timestamp));
+                                echo $date;
                               ?>  
                             </td>
                             <?php
