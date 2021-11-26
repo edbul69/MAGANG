@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 23, 2021 at 03:40 PM
+-- Generation Time: Nov 26, 2021 at 08:08 AM
 -- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.12
+-- PHP Version: 7.4.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -38,18 +38,9 @@ CREATE TABLE `cctv` (
 --
 
 INSERT INTO `cctv` (`ip`, `nama`, `lokasi`) VALUES
-('172.27.17.17', 'Samrat', 'GPDI Samrat'),
-('172.27.17.2', 'Jembatan', 'Jembatan Kuning'),
-('172.27.17.27', 'Eben', 'Depan SD Eben'),
-('172.27.17.29', 'MTC', 'Depan MTC'),
-('172.27.17.36', 'MCC', 'Depan MCC Bahu'),
-('172.27.17.5', 'GPDI', 'GPDI Samrat 2'),
-('172.37.27.106', 'Marina', 'Marina Plaza'),
-('172.37.27.25', 'Calaca', 'Calaca 2'),
-('172.37.27.37', 'Komo1', 'Komo 1'),
-('172.37.27.38', 'Komo2', 'Komo 2'),
-('172.37.27.40', 'Komo3', 'Komo 3'),
-('8.8.8.8', 'Testing', 'Testing');
+('192.168.1.1', 'Testing3', 'Kleak'),
+('8.8.4.4', 'Testing2', 'Malalayang'),
+('8.8.8.8', 'Testing', 'Bahu');
 
 -- --------------------------------------------------------
 
@@ -69,8 +60,11 @@ CREATE TABLE `detail_cctv` (
 --
 
 INSERT INTO `detail_cctv` (`id`, `ip`, `status`, `waktu`) VALUES
-(1, '', '', '2021-11-18 18:45:32'),
-(2, '172.27.17.17', '', '2021-11-18 18:45:32');
+(20, '8.8.8.8', 'Online', '2021-11-26 06:20:39'),
+(21, '8.8.8.8', 'Online', '2021-11-26 06:35:51'),
+(22, '8.8.8.8', 'Online', '2021-11-26 06:42:39'),
+(23, '192.168.1.1', 'Offline', '2021-11-26 07:02:48'),
+(24, '8.8.4.4', 'Online', '2021-11-26 07:05:36');
 
 -- --------------------------------------------------------
 
@@ -93,7 +87,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `email`, `password`, `role_id`, `is_active`, `date_created`) VALUES
-(1, 'Admin', 'admin@mail.com', '123', 2, 1, 0),
+(1, 'Admin', 'admin@mail.com', '$2y$10$0XXcQIBvQXf108CYwKkgSubVeKD3Ynf7iPzyPs.R6YXRQpX/3vK4u', 2, 1, 0),
 (4, 'Erick Abraham', 'admin1@gmail.com', '$2y$10$a7uo6t7r35uwUx8nI2B3R.YOXM.RKlO65ZTBxSh.73tlPnS337g9O', 2, 1, 1630336956);
 
 -- --------------------------------------------------------
@@ -151,7 +145,7 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT for table `detail_cctv`
 --
 ALTER TABLE `detail_cctv`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `user`
